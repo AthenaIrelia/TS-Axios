@@ -16,9 +16,9 @@ router.get('/simple/get', function (req, res) {
 })
 
 router.get('/base/get', function (req, res) {
-  res.json({
-    msg: `hello world`
-  })
+  res.json(
+    req.query
+  )
 })
 
 app.use(webpackDevMiddleware(compiler, {
