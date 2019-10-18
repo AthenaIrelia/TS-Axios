@@ -7,11 +7,13 @@ export type Method = 'get' | 'GET'
   | 'patch' | 'PATCH'
 
 export interface AxiosRequestConfig {
-  url: string
-  method?: Method
-  data?: any
-  params?: any
-  headers?: any
+  url: string;
+  method?: Method;
+  headers?: any;
+  data?: any;
+  params?: any;
+  responseType?: XMLHttpRequestResponseType;
+  timeout?: number;
 }
 
 export interface AxiosResponse {
@@ -23,8 +25,4 @@ export interface AxiosResponse {
   request: any
 }
 export interface AxiosPromise extends Promise<AxiosResponse> {
-}
-export interface AxiosRequestConfig {
-  // ...
-  responseType?: XMLHttpRequestResponseType
 }

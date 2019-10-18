@@ -44,6 +44,25 @@ app.use(webpackDevMiddleware(compiler, {
     chunks: false
   }
 }))
+router.get('/api/handleError', function (req, res) {
+  if (Math.random() > 0.5) {
+    res.json({
+      msg: `hello world`
+    })
+  } else {
+    res.status(500)
+    res.end()
+  }
+})
+// 响应请求超时情况，这里我们设置3秒后响应，而发请求那里设置了超时时间为3秒，所以会发生请求超时异常
+router.get('/api/handleError/timeout', function (req, res) {
+  setTimeout(() => {
+    res.json({
+      msg: `hello world`
+    })
+  }, 3000)
+})
+
 
 app.use(webpackHotMiddleware(compiler))
 
