@@ -1,4 +1,4 @@
-import axios from "../../src/index";
+import axios, { AxiosError } from "../../src/index";
 
 // 1.正常情况
 // axios({
@@ -39,28 +39,35 @@ import axios from "../../src/index";
 // }, 5000);
 
 // // // 4.配置请求超时时间为2秒，模拟请求超时
+axios({
+  method: "get",
+  url: "/api/handleError/timeout",
+  timeout: 2000
+})
+  .then(res => {
+    console.log(res);
+  })
+  .catch((e: AxiosError) => {
+
+    console.log(e.message);
+    console.log(e.config);
+    console.log(e.request);
+    console.log(e.code);
+    console.log(e.isAxiosError);
+  });
+
 // axios({
 //   method: "get",
-//   url: "/api/handleError/timeout",
-//   timeout: 2000
+//   url: "/api/handleError1"
 // })
 //   .then(res => {
 //     console.log(res);
 //   })
 //   .catch(e => {
 //     console.log(e.message);
-//   });
+//     console.log(e.config);
+//     console.log(e.request);
+//     console.log(e.code);
+//     // console.log(e.);
 
-axios({
-  method: "get",
-  url: "/api/handleError1"
-})
-  .then(res => {
-    console.log(res);
-  })
-  .catch(e => {
-    console.log(e.message);
-    console.log(e.config);
-    console.log(e.request);
-    console.log(e.code);
-  });
+//   });
